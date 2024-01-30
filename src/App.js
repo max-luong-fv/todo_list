@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div className="container mx-auto mt-8 p-4 bg-blue-200 rounded-md shadow-lg flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-4">Todo List</h1>
+      <h1 className="text-3xl font-bold mb-4">Liste de tâches</h1>
       <AddTaskForm onAddTask={addTask} />
       <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
     </div>

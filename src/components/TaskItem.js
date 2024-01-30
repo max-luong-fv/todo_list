@@ -2,7 +2,7 @@ import React from 'react';
 
 const TaskItem = ({ task, onToggle, onDelete }) => {
   return (
-    <li className="flex items-center justify-between p-3 border-b border-gray-300">
+    <li className="flex items-center justify-between p-3 w-72 bg-emerald-300 border rounded border-emerald-400 m-3">
       <div className="flex items-center space-x-4">
         <input
           type="checkbox"

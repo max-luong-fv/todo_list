@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'i18next';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import enTranslation from './locales/en.json';
+import frTranslation from './locales/fr.json';
+
+i18n.init({
+  interpolation: { escapeValue: false }, // React already does escaping
+  lng: 'en', // Default language
+  resources: {
+    en: { translation: enTranslation },
+    fr: { translation: frTranslation },
+  },
+});
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <I18nextProvider i18n={i18n}>
+      <App />
+    </I18nextProvider>
   </React.StrictMode>
 );
 

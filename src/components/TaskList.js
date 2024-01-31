@@ -3,7 +3,8 @@ import TaskItem from './TaskItem';
 
 const TaskList = ({ tasks, onToggle, onDelete }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center relative">
+      
       <ul className="space-y-2">
         {tasks.map((task) => (
           <TaskItem

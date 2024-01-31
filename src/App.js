@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
 import CompletedTaskList from './components/CompletedTaskList';
+import LanguageSwitcher from './components/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
+  const { t } = useTranslation();
 
   const addTask = (taskName) => {
     setTasks([...tasks, { id: Date.now(), name: taskName, completed: false }]);
@@ -35,9 +38,6 @@ const App = () => {
     });
   };
   
-  
-  
-  
   const deleteTask = (taskId) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
     setCompletedTasks((prevCompletedTasks) => prevCompletedTasks.filter((task) => task.id !== taskId));
@@ -45,15 +45,17 @@ const App = () => {
 
   return (
     <div className="container mx-auto mt-8 p-4 bg-blue-200 rounded-md shadow-lg flex flex-col items-center justify-center">
-    
-      <h1 className="text-3xl font-bold mb-4">Liste de tâches</h1>
+      
+      
+      <h1 className="text-3xl font-bold mb-4">{t('taskList')}</h1>
       
       <AddTaskForm onAddTask={addTask} />
       <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
       
 
       <CompletedTaskList tasks={completedTasks} onDelete={deleteTask}/>
-    
+
+      <LanguageSwitcher />
     </div>
   );
 };

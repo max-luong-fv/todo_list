@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "i18next": "^23.8.1",
     "react": "^18.2.0",
@@ -17,8 +15,19 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && NODE_ENV=production postcss src/css/tailwind.css -o src/index.css",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+   }
+  },
+  "env": {
+    "test": { "presets": ["react-app"] }
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/react": "^14.2.0",
+    "jest": "^27.5.1"
   }
+  
 }

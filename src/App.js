@@ -19,9 +19,9 @@ const App = () => {
       const updatedTasks = prevTasks.map((task) =>
         task.id === taskId ? { ...task, completed: !task.completed } : task
       );
-  
+
       const toggledTask = updatedTasks.find((task) => task.id === taskId);
-  
+
       if (toggledTask && toggledTask.completed) {
         setCompletedTasks((prevCompletedTasks) =>
           prevCompletedTasks.some((task) => task.id === taskId)
@@ -33,7 +33,7 @@ const App = () => {
           prevCompletedTasks.filter((task) => task.id !== taskId)
         );
       }
-  
+
       return updatedTasks.filter((task) => task.id !== taskId);
     });
   };
@@ -53,7 +53,7 @@ const App = () => {
       <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
       
 
-      <CompletedTaskList tasks={completedTasks} onDelete={deleteTask}/>
+      <CompletedTaskList tasks={completedTasks} onToggle={toggleTask} onDelete={deleteTask}/>
 
       <LanguageSwitcher />
     </div>
